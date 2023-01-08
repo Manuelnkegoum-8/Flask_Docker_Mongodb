@@ -1,0 +1,13 @@
+flask
+python-dotenv
+Flask-PyMongo
+fasttext
+scikit-learn
+flask-restful
+flask_session
+flask-login
+flask-cors
+pymongo
+pandas
+numpy
+gensim

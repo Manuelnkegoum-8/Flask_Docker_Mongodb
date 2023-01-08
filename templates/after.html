@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head><link href="{{url_for('static', filename = 'style.css')}}"rel="stylesheet"></head>
+<body>
+
+    <center>
+    <div style="padding-top: 100px;">
+        <div>
+        {% for table in tables %}
+        {{ table|safe }}
+        {% endfor %} 
+        </div>
+    </div> 
+    <a href=#>go back to home page</a>
+    </center>
+
+</body>
+</html>

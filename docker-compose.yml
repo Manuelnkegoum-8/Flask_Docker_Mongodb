@@ -1,0 +1,54 @@
+version: '3.3'
+
+services:
+ app:
+  container_name: PYTHON-API-BACKEND
+  build: .
+  environment:
+      MONGODB_DATABASE: Manuel
+      MONGODB_USERNAME: flaskuser
+      MONGODB_PASSWORD: azerty8
+  ports:
+    - "5000:5000"
+  volumes:
+    - .:/var/www/app
+  links:
+    - db
+  networks:
+   - frontend
+   - backend
+ db:
+  image: mongo:4.0.8
+  container_name: MONGO-API-BACKEND
+  environment:
+      MONGO_INITDB_DATABASE: Manuel
+      MONGO_INITDB_ROOT_USERNAME: Manuel
+      MONGO_INITDB_ROOT_PASSWORD: pwd
+  ports:
+    - "27017:27017"
+  volumes:
+    - mongodbdata:/data/db
+  networks:
+    - backend
+ webserver:
+    build: nginx
+    container_name: webserver
+    ports:
+      - "443:443"
+    depends_on:
+      - app
+    volumes:
+        - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - frontend
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+volumes:
+  mongodbdata:
+    driver: local
+  nginxdata:
+    driver: local

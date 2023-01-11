@@ -1,8 +1,11 @@
 # Application 
 Implementation of a job recommendation system in IT using NLP techniques.
+
 ##Technologies
+
 ### Flask 
 A lightweight WSGI web application framework used to implement the different routes of our API.
+
 ### MongoDb
 NoSQL Database .It permits us to manage our application more efficiently at scale where are stored the informations about the jobs such as the title , the description, the company and the salary.
 
@@ -11,6 +14,7 @@ Used to direct client requests to the appropriate back-end server. It provides a
 
 
 ## How to install
+
 ### 1-Clone Repo
 ```shell
 git clone https://github.com/Manuelnkegoum-8/Flask_Docker_Mongodb.git

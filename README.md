@@ -1,7 +1,7 @@
 # Application 
 Implementation of a job recommendation system in IT using NLP techniques.
 
-##Technologies
+## Technologies
 
 ### Flask 
 A lightweight WSGI web application framework used to implement the different routes of our API.

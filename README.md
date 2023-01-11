@@ -26,9 +26,10 @@ $docker-compose up
 Then open your browser and start the app at [localhost:5000]()
 ## How to use
 ### 1-Create and user account
-<img src='./static/signup.png',width='700px',height='300px'>
+<img src='./static/signup.png'>
 ### 2-Enter your job specifications
 <img src='./static/login.png'>
 ### 3-Get your results
+<img src='./static/pred.png'>
 <img src=>
 

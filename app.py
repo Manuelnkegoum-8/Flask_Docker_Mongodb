@@ -11,8 +11,8 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "zozo"
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['MONGO_URI'] = f"mongodb+srv://Manuel:pwd@cluster0.ntszcrx.mongodb.net/Manuel"
-#app.config['MONGO_URI'] = f"mongodb+srv://{os.environ['MONGODB_USERNAME']}:{os.environ['MONGODB_PASSWORD']}@cluster0.ntszcrx.mongodb.net/{os.environ['MONGODB_DATABASE']}"
+#app.config['MONGO_URI'] = f"mongodb+srv://Manuel:pwd@cluster0.ntszcrx.mongodb.net/Manuel"
+app.config['MONGO_URI'] = f"mongodb+srv://{os.environ['MONGODB_USERNAME']}:{os.environ['MONGODB_PASSWORD']}@cluster0.ntszcrx.mongodb.net/{os.environ['MONGODB_DATABASE']}"
 mongo = PyMongo(app)
 db = mongo.db.Jobs
 ident = mongo.db.ids
@@ -84,9 +84,8 @@ def signup():
 
 @app.route('/pred', methods=['POST'])
 def clt():
-    """em = session.get('my_var', None)
-    name = ident.find_one({'Email':em}).next()['Nom']"""
-    client = pd.DataFrame(session['client'])
+    #em = session.get('my_var', None)
+    #name = ident.find_one({'Email':em})['Nom']
     data1 = request.form['Job'].lower()
     data2 = request.form['Location'].lower()
     data3 = request.form['Skill1'].lower()
@@ -94,6 +93,7 @@ def clt():
     data5 = request.form['Skill3'].lower()
     skillset = data3+" "+data4+" "+data5
     jober = {"Job":data1,"Location":data2,"skills":skillset}
+    client = pd.DataFrame(session.get('client'))
     #processus de matching
     dummies,vectorizer = init(client)
     pred = match(jober,0.8,client,dummies,vectorizer)

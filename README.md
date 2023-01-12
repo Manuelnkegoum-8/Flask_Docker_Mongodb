@@ -29,7 +29,7 @@ $docker-compose up
 ```
 Then open your browser and start the app at [localhost:5000]()
 ## How to use
-### 1-Create and user account
+### 1-Create an user account
 <img src='./static/signup.png'>
 
 ### 2-Enter your job specifications

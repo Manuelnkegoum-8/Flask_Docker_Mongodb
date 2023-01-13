@@ -9,9 +9,8 @@ import pandas as pd
 import numpy as np
 load_dotenv()
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "zozo"
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 app.config['SESSION_TYPE'] = 'filesystem'
-#app.config['MONGO_URI'] = f"mongodb+srv://Manuel:pwd@cluster0.ntszcrx.mongodb.net/Manuel"
 app.config['MONGO_URI'] = f"mongodb+srv://{os.environ['MONGODB_USERNAME']}:{os.environ['MONGODB_PASSWORD']}@cluster0.ntszcrx.mongodb.net/{os.environ['MONGODB_DATABASE']}"
 mongo = PyMongo(app)
 db = mongo.db.Jobs

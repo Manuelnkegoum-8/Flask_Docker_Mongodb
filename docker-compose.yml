@@ -6,24 +6,26 @@ services:
   build: .
   environment:
       MONGODB_DATABASE: Manuel
-      MONGODB_USERNAME: flaskuser
-      MONGODB_PASSWORD: azerty8
+      MONGODB_USERNAME: ${MONGODB_USERNAME}
+      MONGODB_PASSWORD: ${MONGODB_PASSWORD}
   ports:
     - "5000:5000"
   volumes:
     - .:/var/www/app
-  links:
+  depends_on:
     - db
   networks:
    - frontend
    - backend
  db:
   image: mongo:4.0.8
-  container_name: MONGO-API-BACKEND
+  container_name: mongo
+  restart: unless-stopped
   environment:
-      MONGO_INITDB_DATABASE: '${MONGO_INITDB_DATABASE}'
-      MONGO_INITDB_ROOT_USERNAME: '${MONGO_INITDB_ROOT_USERNAME}'
-      MONGO_INITDB_ROOT_PASSWORD: '${MONGO_INITDB_ROOT_PASSWORD}'
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: pwd
+      MONGODB_DATA_DIR: /data/db
+      MONDODB_LOG_DIR: /dev/null
   ports:
     - "27017:27017"
   volumes:

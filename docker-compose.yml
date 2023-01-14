@@ -6,7 +6,7 @@ services:
   environment:
       - MONGO_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
       - MONGO_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-      - MONGO_DATABASE=Manuel
+      - MONGO_DATABASE=Sentiment
   ports:
     - "5000:5000"
   volumes:
@@ -20,10 +20,11 @@ services:
   image: mongo
   container_name: mongodb
   restart: unless-stopped
+  command: ["sh", "-c", "mongosh mongodb://root:pwd@mongodb:27017/admin --eval load /docker-entrypoint-initdb.d/init-db.js"]
   environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-      - MONGO_INITDB_DATABASE=Manuel
+      - MONGO_INITDB_DATABASE=Sentiment
   ports:
     - "27017:27017"
   volumes:

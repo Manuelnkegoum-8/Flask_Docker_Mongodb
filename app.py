@@ -11,7 +11,7 @@ app.config['SECRET_KEY'] = 'u'
 app.config['SESSION_TYPE'] = 'filesystem'
 def get_db():
     client = MongoClient(host='mongodb',port=27017, username=os.environ.get('MONGO_USERNAME'),password=os.environ.get('MONGO_PASSWORD'),authSource="admin")
-    db = client["Manuel"]
+    db = client["Sentiment"]
     return db
 @app.route('/')
 def main():

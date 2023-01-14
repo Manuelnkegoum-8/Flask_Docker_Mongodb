@@ -1,3 +1,3 @@
-db = db.getSiblingDB("Manuel");
-db.Manuel.drop();
+db = db.getSiblingDB("Sentiment");
+db.Sentiment.drop();
 db.createCollection("ident");

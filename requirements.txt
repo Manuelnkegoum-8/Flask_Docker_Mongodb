@@ -1,4 +1,6 @@
 flask
+tensorflow
+keras
 python-dotenv
 Flask-PyMongo
 fasttext
@@ -10,4 +12,3 @@ flask-cors
 pymongo
 pandas
 numpy
-gensim

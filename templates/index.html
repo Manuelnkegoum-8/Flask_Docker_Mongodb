@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<head><title>Matching</title>
+<head><title>Sentiment Analysis</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link href="{{url_for('static', filename = 'style.css')}}"rel="stylesheet"></head>
 <body> 
         <br>
-        <div class="banner"><h1> Matching vers client </h1></div>
+        <div class="banner"><h1> Sentiment Analysis </h1></div>
         <div class="testbox">
         <form method="POST", action= "{{url_for('clt')}}" >
             {% with messages = get_flashed_messages() %}
@@ -15,24 +15,10 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
-           <strong> <div class="item">JOB :  <select name='Job'>
-            <option value="Data Scientist">Data Scientist</option>
-            <option value="Web developer">Web developer</option>
-            <option value="Ios developer">Ios developer</option>
-            <option value="Ux designer">Ux designer</option></select>
-            <div class="item">Localisation du poste :  <input type="text", name='Location', placeholder="your prefered location", required> <br><br></div>
-            <div class="item">Skill n°1 :  <select name='Skill1'>
-                {% for skill in skills %} 
-                        <option value={{ skill }}>{{ skill }} </option>
-                {% endfor %} </select><br><br></div>
-            <div class="item">Skill n°2 :  <select name='Skill2'>
-                {% for skill in skills %} 
-                        <option value={{ skill }}>{{ skill }} 
-                {% endfor %} </select><br><br></div>
-            <div class="item">Skill n°3 :  <select name='Skill3'>  
-                {% for skill in skills %} 
-                        <option value={{ skill }}>{{ skill }} 
-                {% endfor %} </select><br><br></div>
+           <strong> <div class="item">Language :  <select name='lang'>
+            <option value="French">French</option>
+            <option value="English">English</option>
+            <div class="item">Your Text:  <input type="text", name='sentence', placeholder="sentence", required> <br><br></div>
             <div class="btn-block"><button type="submit" , value='predict!' > Match ! </button></div>
         </form>
     </div>

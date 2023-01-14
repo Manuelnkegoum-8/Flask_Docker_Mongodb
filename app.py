@@ -5,17 +5,16 @@ from pymongo import MongoClient
 from IA.nlp import prediction
 from flask_pymongo import PyMongo
 import os
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'u'
 app.config['SESSION_TYPE'] = 'filesystem'
 def get_db():
-    client = MongoClient(host='mongodb',port=27017, username=os.environ.get('MONGO_USERNAME'),password=os.environ.get('MONGO_PASSWORD'),authSource="admin")
+    client = MongoClient(host='mongodb',port=27017,authSource="admin")
     db = client["Sentiment"]
     return db
 @app.route('/')
 def main():
-    return render_template('index.html')
+    return render_template('login.html')
 
 @app.route('/redirect')
 def redirect():
@@ -66,8 +65,8 @@ def clt():
     data2 = request.form['sentence'].lower()
     if data1=='french':
         tr = Translator()
-        data2 = tr.translate(data2,dest='fr').text
-    df = prediction(data2)
+        data2 = tr.translate(data2,dest='en').text
+    df = prediction(data2.lower())
     return render_template('after.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 if __name__ == "__main__":

@@ -7,9 +7,6 @@ from keras.layers import LSTM, Dense, Dropout, Masking, Embedding,Bidirectional
 from tensorflow.compat.v1.keras.layers import CuDNNLSTM
 from keras.models import Sequential, load_model
 import json
-
-
-
 classes = ['admiration', 'amusement', 'anger', 'annoyance', 'approval', 'caring',
        'confusion', 'curiosity', 'desire', 'disappointment', 'disapproval',
        'disgust', 'embarrassment', 'excitement', 'fear', 'gratitude', 'grief',
@@ -27,7 +24,11 @@ def prediction(sentence):
     # load model
     with tf.device('/cpu:0'):
         Model = load_model('./IA/goemo.h5')
-        pred = Model.predict(sequence)
-    df = pd.DataFrame(pred,columns=classes)
+        pred = Model.predict(sequence)[0]
+        tops = sorted(range(len(pred)), key=lambda i: pred[i])[-5:]
+        result = list(map(lambda x:round(x*100,2),pred[tops]))
+        col = [classes[i] for i in tops]
+        print(col)
+    df = pd.DataFrame([result],columns=col)
     return df
     

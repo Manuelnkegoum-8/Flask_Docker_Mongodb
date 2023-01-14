@@ -19,14 +19,12 @@ Used to direct client requests to the appropriate back-end server. It provides a
 ```shell
 git clone https://github.com/Manuelnkegoum-8/Flask_Docker_Mongodb.git
 ```
-### 2-.env file
-Create a .env file like the env.example
-<img src='./static/signup.png'>
-### 3-Build
+
+### 2-Build
 ```shell
 $docker-compose build
 ```
-### 4-Start and debug
+### 3-Start and debug
 ```shell
 $docker-compose up
 ```
@@ -35,7 +33,7 @@ Then open your browser and start the app at [localhost:5000]()
 ### 1-Create an user account
 <img src='./static/signup.png'>
 
-### 2-Enter your job specifications
+### 2-Enter your sentence
 <img src='./static/login.png'>
 
 ### 3-Get your results

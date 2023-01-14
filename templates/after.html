@@ -4,6 +4,13 @@
 
     <center>
     <div style="padding-top: 100px;">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for  message in messages %}
+            <p style="align-items: center; color: black;">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
         <div>
         {% for table in tables %}
         {{ table|safe }}

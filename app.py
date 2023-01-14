@@ -65,8 +65,13 @@ def clt():
     data2 = request.form['sentence'].lower()
     if data1=='french':
         tr = Translator()
+        data = data2
         data2 = tr.translate(data2,dest='en').text
     df = prediction(data2.lower())
+    if data1=='french':
+        flash(data+" > "+data2)
+    else:
+        flash(data2)
     return render_template('after.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 if __name__ == "__main__":

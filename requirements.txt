@@ -9,6 +9,7 @@ flask-restful
 flask_session
 flask-login
 flask-cors
+googletrans==4.0.0rc1
 pymongo
 pandas
 numpy

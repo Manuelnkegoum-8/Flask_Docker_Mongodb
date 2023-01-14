@@ -1,5 +1,6 @@
 from flask import Flask, render_template,  request, flash, session, jsonify,current_app
 from flask_session import Session
+from googletrans import Translator
 from pymongo import MongoClient
 from IA.nlp import prediction
 from flask_pymongo import PyMongo
@@ -14,7 +15,7 @@ def get_db():
     return db
 @app.route('/')
 def main():
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route('/redirect')
 def redirect():
@@ -63,7 +64,9 @@ def signup():
 def clt():
     data1 = request.form['lang'].lower()
     data2 = request.form['sentence'].lower()
-    #df = {"language":data1,"sentence":data2}
+    if data1=='french':
+        tr = Translator()
+        data2 = tr.translate(data2,dest='fr').text
     df = prediction(data2)
     return render_template('after.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
 
